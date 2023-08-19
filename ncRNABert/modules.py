@@ -154,7 +154,7 @@ class TransformerLayer(nn.Module):
     def forward(self, x, self_attn_mask=None):
         residual = x
         x = self.self_attn_layer_norm(x)
-        x = self.mha_layer(
+        x, attn_weight = self.mha_layer(
             query=x,
             key=x,
             value=x,
@@ -167,6 +167,6 @@ class TransformerLayer(nn.Module):
         x = self.ffn(x)
         x = residual + x
 
-        return x
+        return x, attn_weight
 
         
