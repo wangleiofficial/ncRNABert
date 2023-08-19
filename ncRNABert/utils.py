@@ -65,4 +65,4 @@ def load_hub_workaround(url):
         )
     except urllib.error.HTTPError as e:
         raise Exception(f"Could not load {url}, check your network!")
-    return 
+    return data
