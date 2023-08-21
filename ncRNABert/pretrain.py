@@ -15,7 +15,6 @@ def load_ncRNABert():
                          num_layers=hyper_parameter['num_layer'],
                          embed_dim=hyper_parameter['embed_dim'],
                          attention_heads=hyper_parameter['attention_heads'],
-                         dropout=hyper_parameter['dropout'],
                          padding_idx=token_to_index["PADDING_MASK"])
 
     model.load_state_dict(model_data['state_dict'])
