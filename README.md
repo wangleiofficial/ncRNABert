@@ -6,6 +6,7 @@
 |   **Model**    | **# of parameters** | **# of hidden size** |            **Pretraining dataset**             | **# of ncRNAs** | **Model download** |
 |:--------------:|:-------------------:|:----------------------:|:----------------------------------------------:|:-----------------:|:------------------------:|
 |    ncRNABert   |        303M         |           1024           | [RNAcentral](http://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/sequences/rnacentral_active.fasta.gz) |       26M        |      [Download](https://zenodo.org/record/8263889/files/ncRNABert.pt)       |
+|    ncRNABert   |        303M         |           1024           | [RNAcentral](http://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/sequences/rnacentral_active.fasta.gz) + nt |       -       |      [Download](https://zenodo.org/records/10421246/files/ncRNABert_nt_rnacentral_3kmer.pt)       |
 
 ### Install
 As a prerequisite, you must have PyTorch installed to use this repository.
@@ -26,7 +27,7 @@ pip install ncRNABert
 #### ncRNA sequence embedding
 
 ```
-from ncRNABert.pretrain import load_ncRNABert
+from ncRNABert.pretrain import load_ncRNABert, load_ncRNABert_ex
 from ncRNABert.utils import BatchConverter
 import torch
 
@@ -37,14 +38,19 @@ data = [
 
 ids, batch_token, lengths = BatchConverter(data)
 model = load_ncRNABert()
+model_ex = load_ncRNABert_ex()
 with torch.no_grad():
     results = model(batch_token, lengths, repr_layers=[24])
+    results_ex = model_ex(batch_token, lengths, repr_layers=[24])
 # Generate per-sequence representations via averaging
 token_representations = results["representations"][24]
+token_representations_ex = results_ex["representations"][24]
 sequence_representations = []
+sequence_representations_ex = []
 batch_lens = [len(item[1]) for item in data]
 for i, tokens_len in enumerate(batch_lens):
     sequence_representations.append(token_representations[i, 1 : tokens_len - 1].mean(0))
+    sequence_representations_ex.append(token_representations_ex[i, 1 : tokens_len - 1].mean(0))
 ```
 
 ### License
