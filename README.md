@@ -5,7 +5,7 @@
 ### Model details
 |   **Model**    | **# of parameters** | **# of hidden size** |            **Pretraining dataset**             | **# of ncRNAs** | **Model download** |
 |:--------------:|:-------------------:|:----------------------:|:----------------------------------------------:|:-----------------:|:------------------------:|
-|    ncRNABert   |        303M         |           1024           | [RNAcentral](http://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/sequences/rnacentral_active.fasta.gz) |       26M        |      [Download](https://zenodo.org/record/8263889/files/ncRNABert.pt)       |
+|    ncRNABert   |        303M         |           1024           | [RNAcentral](http://ftp.ebi.ac.uk/pub/databases/RNAcentral/current_release/sequences/rnacentral_active.fasta.gz) |       26M        |      [Download](https://zenodo.org/records/15162985/files/ncRNABert.pt)       |
 
 ### Install
 As a prerequisite, you must have PyTorch installed to use this repository.

@@ -4,7 +4,7 @@ import torch
 from .model import RNABertModel
 from .utils import load_hub_workaround, token_to_index
 
-MODEL_URL = "https://zenodo.org/record/8263889/files/ncRNABert.pt"
+MODEL_URL = "https://zenodo.org/records/15162985/files/ncRNABert.pt"
 MODEL_URL_EX = "https://zenodo.org/records/10421246/files/ncRNABert_nt_rnacentral_3kmer.pt"
 
 
