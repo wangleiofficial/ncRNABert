@@ -41,6 +41,13 @@ def split_rna_seq(sequence):
     token_split_list += [sequence[-2:], sequence[-1]]
     return token_split_list
 
+def split_rna_seq_shift(sequence):
+    sequence_length = len(sequence)
+    token_split_list = [sequence[(i-1):(i+2)] for i in range(1,sequence_length-1)]
+    token_split_list += [sequence[-2:]]
+    token_split_list.insert(0, sequence[0:2])
+    return token_split_list
+
 def BatchConverter(raw_batch: Sequence[Tuple[str, str]]):
     ids = [item[0] for item in raw_batch]
     seqs = [item[1] for item in raw_batch]
@@ -48,7 +55,7 @@ def BatchConverter(raw_batch: Sequence[Tuple[str, str]]):
     batch_token = []
     for seq in seqs:
         seq = re.sub(r"[T]", "U", seq.upper())
-        batch_token.append(torch.tensor([token_to_index.get(i, token_to_index["<UNK>"]) for i in split_rna_seq(seq)]))
+        batch_token.append(torch.tensor([token_to_index.get(i, token_to_index["<UNK>"]) for i in split_rna_seq_shift(seq)]))
     batch_token = pad_sequence(batch_token, batch_first=True, padding_value=token_to_index['PADDING_MASK'])
     return ids, batch_token, lengths
 

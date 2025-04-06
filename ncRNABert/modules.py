@@ -67,7 +67,7 @@ class MultiheadAttention(nn.Module):
         q = self.rotary_emb.rotate_queries_or_keys(q)
         k = self.rotary_emb.rotate_queries_or_keys(k)
         
-        attn_weight = torch.einsum("...ij,...kj->...ik", q, k)/self.scaling
+        attn_weight = torch.einsum("...ij,...kj->...ik", q, k) * self.scaling
 
         if attn_mask is not None:
             attn_weight = attn_weight.masked_fill(attn_mask==0, -1e9)
