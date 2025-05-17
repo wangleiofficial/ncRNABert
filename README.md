@@ -2,6 +2,17 @@
 
 [![PyPI - Version](https://img.shields.io/pypi/v/ncRNABert.svg?style=flat)](https://pypi.org/project/ncRNABert/) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ncRNABert.svg)](https://pypi.org/project/ncRNABert/) [![GitHub - LICENSE](https://img.shields.io/github/license/wangleiofficial/ncRNABert.svg?style=flat)](./LICENSE) ![PyPI - Downloads](https://img.shields.io/pypi/dm/ncRNABert) [![Wheel](https://img.shields.io/pypi/wheel/ncRNABert)](https://pypi.org/project/ncRNABert/) ![build](https://img.shields.io/github/actions/workflow/status/wangleiofficial/ncRNABert/publish_to_pypi.yml)
 
+## Table of Contents
+
+- [Model Details](#model-details)  
+- [Installation](#install)  
+- [Usage](#usage)  
+  - [ncRNA Sequence Embedding](#ncrna-sequence-embedding)  
+- [Comprehensive Benchmarking of Large Language Models](#comprehensive-benchmarking-of-large-language-models)  
+- [Zero-Shot Correlation with Experimental Fitness](#zero-shot-correlation-with-experimental-fitness)  
+- [License](#license)  
+
+  
 ### Model details
 |   **Model**    | **# of parameters** | **# of hidden size** |            **Pretraining dataset**             | **# of ncRNAs** | **Model download** |
 |:--------------:|:-------------------:|:----------------------:|:----------------------------------------------:|:-----------------:|:------------------------:|
@@ -18,11 +29,9 @@ pip install git+https://github.com/wangleiofficial/ncRNABert
 
 # stable version
 pip install ncRNABert
-
 ```
 
 ### Usage
-
 #### ncRNA sequence embedding
 
 ```
@@ -42,7 +51,6 @@ with torch.no_grad():
 # Generate per-sequence representations via averaging
 token_representations = results["representations"][24]
 sequence_representations = []
-sequence_representations_ex = []
 batch_lens = [len(item[1]) for item in data]
 for i, tokens_len in enumerate(batch_lens):
     sequence_representations.append(token_representations[i].mean(0))
@@ -76,8 +84,9 @@ When comparing the performance of different RNA language models, the ncRNABert m
 
 
 
-### Zero-Shot Correlation Between Language Model (Pseudo)Likelihoods and Experimental Fitness in Seven ncRNA DMS Experiments
+### Zero-Shot Correlation with Experimental Fitness
 
+ncRNABert shows strong zero-shot correlation between language model (pseudo)likelihoods and experimental fitness across seven ncRNA DMS datasets(https://github.com/evo-design/evo/), outperforming other models with an average correlation of 0.294.
 
 | Model                  | Andreasson (2020) | Hayden (2011) | Kobori (2016) | Pitt (2010) | Zhang (2009) | Domingo (2018) | Guy (2014) | Average |
 | ---------------------- | ----------------- | ------------- | ------------- | ----------- | ------------ | -------------- | ---------- | ------- |
