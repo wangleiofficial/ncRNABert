@@ -49,7 +49,7 @@ for i, tokens_len in enumerate(batch_lens):
 ```
 
 ### Comprehensive benchmarking of Large Language Models
-When comparing the performance of different RNA language models, the ncRNABert model has demonstrated exceptional performance across multiple evaluation metrics. According to the tales, ncRNABert outperforms other models in terms of F1 score, achieving an average accuracy of 0.595, which is the highest among all the models. 
+When comparing the performance of different RNA language models, the ncRNABert model has demonstrated exceptional performance across multiple evaluation metrics. According to the tales, ncRNABert outperforms other models in terms of F1 score, achieving an average accuracy of 0.595, which is the highest among all the models. (https://github.com/sinc-lab/rna-llm-folding)
 
 | Methods    | 16s   | 23s   | 5s    | RNaseP | grp1  | srp   | tRNA  | telomerase | tmRNA | Average |
 |------------|-------|-------|-------|--------|-------|-------|-------|------------|-------|---------|
@@ -73,5 +73,19 @@ When comparing the performance of different RNA language models, the ncRNABert m
 | RiNALMo    | 0.599 | 0.446     |
 | one-hot    | 0.351 | 0.383     |
 | ncRNABert  | 0.595 | 0.572     |
+
+
+
+### Zero-Shot Correlation Between Language Model (Pseudo)Likelihoods and Experimental Fitness in Seven ncRNA DMS Experiments
+
+
+| Model                  | Andreasson (2020) | Hayden (2011) | Kobori (2016) | Pitt (2010) | Zhang (2009) | Domingo (2018) | Guy (2014) | Average |
+| ---------------------- | ----------------- | ------------- | ------------- | ----------- | ------------ | -------------- | ---------- | ------- |
+| Evo                    | 0.14              | 0.13          | 0.17          | 0.14        | 0.60         | 0.45           | 0.24       | 0.267   |
+| GenSLM                 | 0.10              | 0.19          | 0.11          | 0.18        | 0.12         | 0.29           | 0.05       | 0.149   |
+| Nucleotide Transformer | 0.07              | 0.24          | 0.20          | 0.01        | 0.20         | 0.06           | 0.05       | 0.119   |
+| RNA‑FM                 | 0.16              | 0.11          | 0.03          | 0.13        | 0.56         | 0.20           | 0.05       | 0.177   |
+| ncRNABert              | 0.14              | 0.24          | 0.18          | 0.01        | 0.69         | 0.43           | 0.37       | 0.294   |
+
 ### License
 This source code is licensed under the Apache-2.0 license found in the LICENSE file in the root directory of this source tree.
