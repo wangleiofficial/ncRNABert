@@ -53,7 +53,7 @@ token_representations = results["representations"][24]
 sequence_representations = []
 batch_lens = [len(item[1]) for item in data]
 for i, tokens_len in enumerate(batch_lens):
-    sequence_representations.append(token_representations[i].mean(0))
+    sequence_representations.append(token_representations[i,:tokens_len].mean(0))
 ```
 
 ### Comprehensive benchmarking of Large Language Models
